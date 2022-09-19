@@ -27,7 +27,7 @@ class _MainPage extends State<MainPage> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Better šaliny "),
-          backgroundColor: constants.mainColor,
+          backgroundColor: constants.secondaryColor,
         ),
         body: BlocBuilder<SalinaBloc, SalinaState>(
           builder: (context, state) {
