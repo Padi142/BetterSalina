@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -27,6 +28,6 @@ func main() {
 
 		return c.SendString(sb)
 	})
-
-	log.Fatal(app.Listen(":3000"))
+	port := os.Getenv("PORT")
+	log.Fatal(app.Listen(":" + port))
 }
