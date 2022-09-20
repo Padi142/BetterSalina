@@ -28,6 +28,11 @@ func main() {
 
 		return c.SendString(sb)
 	})
+	app.Get("/", func(c *fiber.Ctx) error {
+
+		return c.SendString("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+	})
+
 	port := os.Getenv("PORT")
 	log.Fatal(app.Listen("0.0.0.0:" + port))
 }
