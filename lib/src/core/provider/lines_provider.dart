@@ -7,16 +7,16 @@ class LinesProvidel {
   Future<List<Salina>> loadLines(String stopId) async {
     try {
       List<Salina> salinas = [];
-      var client = http.Client();
+
       final Uri url =
           Uri.parse('https://mapa.idsjmk.cz/api/Departures?stopid=$stopId');
       var response = await http.get(url);
       final decodedResponse = jsonDecode(response.body);
       List<dynamic> postLists = decodedResponse["PostList"];
-      List<dynamic> departures = postLists[0]["Departures"];
-      departures.forEach((it) {
+      List<dynamic> departures = postLists[1]["Departures"];
+      for (var it in departures) {
         salinas.add(Salina.fromJson(it));
-      });
+      }
       return salinas;
     } catch (e) {
       return [];
