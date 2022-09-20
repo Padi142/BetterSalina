@@ -29,5 +29,5 @@ func main() {
 		return c.SendString(sb)
 	})
 	port := os.Getenv("PORT")
-	log.Fatal(app.Listen(":" + port))
+	log.Fatal(app.Listen("0.0.0.0:" + port))
 }
