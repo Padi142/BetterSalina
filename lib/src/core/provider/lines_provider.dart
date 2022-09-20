@@ -8,8 +8,8 @@ class LinesProvidel {
     try {
       List<Salina> salinas = [];
 
-      final Uri url =
-          Uri.parse('https://mapa.idsjmk.cz/api/Departures?stopid=$stopId');
+      final Uri url = Uri.parse(
+          'https://bettersalina-production.up.railway.app/saliny/$stopId');
       var response = await http.get(url);
       final decodedResponse = jsonDecode(response.body);
       List<dynamic> postLists = decodedResponse["PostList"];
