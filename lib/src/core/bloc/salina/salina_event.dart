@@ -9,7 +9,8 @@ abstract class SalinaEvent extends Equatable {
 
 class LoadLines extends SalinaEvent {
   final String stopId;
-  const LoadLines(this.stopId);
+  final int direction;
+  const LoadLines(this.stopId, this.direction);
 
   @override
   List<Object> get props => [];

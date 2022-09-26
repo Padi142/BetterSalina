@@ -18,7 +18,7 @@ class _MainPage extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<SalinaBloc>(context).add(const LoadLines("1721"));
+    BlocProvider.of<SalinaBloc>(context).add(const LoadLines("1721", 1));
   }
 
   @override
@@ -52,27 +52,39 @@ class TablesBody extends StatefulWidget {
 }
 
 class _TablesBodyState extends State<TablesBody> {
-  final RefreshController _refreshController =
-      RefreshController(initialRefresh: false);
-
   @override
   Widget build(BuildContext context) {
-    return SmartRefresher(
-      controller: _refreshController,
-      enablePullDown: true,
-      onRefresh: () {
-        BlocProvider.of<SalinaBloc>(context).add(const LoadLines("1721"));
-        _refreshController.refreshCompleted();
-      },
-      child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          itemCount: widget.tables.length,
-          itemBuilder: (_, index) {
-            return SalinaContainer(
-              salina: widget.tables[index],
-            );
-          }),
+    return Column(
+      children: [
+        ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            itemCount: widget.tables.length,
+            itemBuilder: (_, index) {
+              return SalinaContainer(
+                salina: widget.tables[index],
+              );
+            }),
+        const SizedBox(
+          height: 20,
+        ),
+        Row(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  BlocProvider.of<SalinaBloc>(context)
+                      .add(const LoadLines("1721", 0));
+                },
+                child: const Text("0")),
+            ElevatedButton(
+                onPressed: () {
+                  BlocProvider.of<SalinaBloc>(context)
+                      .add(const LoadLines("1721", 1));
+                },
+                child: const Text("1")),
+          ],
+        )
+      ],
     );
   }
 }

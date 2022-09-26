@@ -4,7 +4,7 @@ import 'package:better_salina_app/src/core/model/salina_model.dart';
 import 'package:http/http.dart' as http;
 
 class LinesProvidel {
-  Future<List<Salina>> loadLines(String stopId) async {
+  Future<List<Salina>> loadLines(String stopId, int direction) async {
     try {
       List<Salina> salinas = [];
 
@@ -13,7 +13,7 @@ class LinesProvidel {
       var response = await http.get(url);
       final decodedResponse = jsonDecode(response.body);
       List<dynamic> postLists = decodedResponse["PostList"];
-      List<dynamic> departures = postLists[1]["Departures"];
+      List<dynamic> departures = postLists[direction]["Departures"];
       for (var it in departures) {
         salinas.add(Salina.fromJson(it));
       }

@@ -12,7 +12,8 @@ class SalinaBloc extends Bloc<SalinaEvent, SalinaState> {
   }
   LinesProvidel guessProvider = LinesProvidel();
   Future<void> _onLoadLines(LoadLines event, Emitter<SalinaState> emit) async {
-    List<Salina> salinas = await guessProvider.loadLines(event.stopId);
+    List<Salina> salinas =
+        await guessProvider.loadLines(event.stopId, event.direction);
 
     if (salinas.isNotEmpty) {
       emit(SalinaState.loadedTables(salinas));
