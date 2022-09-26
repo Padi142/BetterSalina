@@ -5,8 +5,11 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cache"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
@@ -16,6 +19,17 @@ func main() {
 	// Default config
 	app.Use(cors.New())
 
+	//Cache
+	app.Use(cache.New(cache.Config{
+		ExpirationGenerator: func(c *fiber.Ctx, cfg *cache.Config) time.Duration {
+			newCacheTime, _ := strconv.Atoi(c.GetRespHeader("Cache-Time", "10"))
+			return time.Second * time.Duration(newCacheTime)
+		},
+		KeyGenerator: func(c *fiber.Ctx) string {
+			return c.Path()
+		},
+	}))
+
 	// Or extend your config for customization
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
@@ -23,6 +37,8 @@ func main() {
 	}))
 
 	app.Get("/saliny/:stopId", func(c *fiber.Ctx) error {
+		c.Response().Header.Add("Cache-Time", "10")
+
 		stopId := c.Params("stopId")
 		resp, err := http.Get("https://mapa.idsjmk.cz/api/Departures?stopid=" + stopId)
 		if err != nil {
@@ -33,6 +49,7 @@ func main() {
 
 	})
 	app.Get("/stops", func(c *fiber.Ctx) error {
+		c.Response().Header.Add("Cache-Time", "6000")
 		resp, err := http.Get("https://mapa.idsjmk.cz/api/stops.json")
 		if err != nil {
 			log.Fatalln(err)
