@@ -29,14 +29,16 @@ func main() {
 			log.Fatalln(err)
 		}
 
-		body, err := ioutil.ReadAll(resp.Body)
+		return c.SendString(convertBody(resp))
+
+	})
+	app.Get("/stops", func(c *fiber.Ctx) error {
+		resp, err := http.Get("https://mapa.idsjmk.cz/api/stops.json")
 		if err != nil {
 			log.Fatalln(err)
 		}
-		//Convert the body to type string
-		sb := string(body)
 
-		return c.SendString(sb)
+		return c.SendString(convertBody(resp))
 	})
 	app.Get("/", func(c *fiber.Ctx) error {
 
@@ -45,4 +47,12 @@ func main() {
 
 	port := os.Getenv("PORT")
 	log.Fatal(app.Listen("0.0.0.0:" + port))
+}
+func convertBody(resp *http.Response) string {
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	//Convert the body to type string
+	return string(body)
 }
