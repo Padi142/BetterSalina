@@ -9,7 +9,7 @@ class LinesProvidel {
       List<LineNumber> lines = [];
 
       final Uri url =
-          Uri.parse('https://mapa.idsjmk.cz/api/Departures?stopid=$stopId');
+          Uri.parse('https://bettersalina-production.up.railway.app/$stopId');
       var response = await http.get(url);
       final decodedResponse = jsonDecode(response.body);
       List<dynamic> postLists = decodedResponse["PostList"];
