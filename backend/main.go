@@ -49,7 +49,7 @@ func main() {
 
 	})
 	app.Get("/stops", func(c *fiber.Ctx) error {
-		c.Response().Header.Add("Cache-Time", "6000")
+		c.Response().Header.Add("Cache-Time", "12000")
 		resp, err := http.Get("https://mapa.idsjmk.cz/api/stops.json")
 		if err != nil {
 			log.Fatalln(err)

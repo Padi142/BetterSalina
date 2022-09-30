@@ -19,37 +19,46 @@ mixin _$SalinaState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Salina> lines) loadedTables,
+    required TResult Function() error,
+    required TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)
+        loadedTables,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Salina> lines)? loadedTables,
+    TResult Function()? error,
+    TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)?
+        loadedTables,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Salina> lines)? loadedTables,
+    TResult Function()? error,
+    TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)?
+        loadedTables,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(Error value) error,
     required TResult Function(LoadedLines value) loadedTables,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
     TResult Function(LoadedLines value)? loadedTables,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
     TResult Function(LoadedLines value)? loadedTables,
     required TResult orElse(),
   }) =>
@@ -111,7 +120,9 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Salina> lines) loadedTables,
+    required TResult Function() error,
+    required TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)
+        loadedTables,
   }) {
     return initial();
   }
@@ -120,7 +131,9 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Salina> lines)? loadedTables,
+    TResult Function()? error,
+    TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)?
+        loadedTables,
   }) {
     return initial?.call();
   }
@@ -129,7 +142,9 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Salina> lines)? loadedTables,
+    TResult Function()? error,
+    TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)?
+        loadedTables,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -142,6 +157,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(Error value) error,
     required TResult Function(LoadedLines value) loadedTables,
   }) {
     return initial(this);
@@ -151,6 +167,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
     TResult Function(LoadedLines value)? loadedTables,
   }) {
     return initial?.call(this);
@@ -160,6 +177,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
     TResult Function(LoadedLines value)? loadedTables,
     required TResult orElse(),
   }) {
@@ -175,11 +193,122 @@ abstract class Initial implements SalinaState {
 }
 
 /// @nodoc
+abstract class _$$ErrorCopyWith<$Res> {
+  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
+      __$$ErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ErrorCopyWithImpl<$Res> extends _$SalinaStateCopyWithImpl<$Res>
+    implements _$$ErrorCopyWith<$Res> {
+  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+      : super(_value, (v) => _then(v as _$Error));
+
+  @override
+  _$Error get _value => super._value as _$Error;
+}
+
+/// @nodoc
+
+class _$Error implements Error {
+  const _$Error();
+
+  @override
+  String toString() {
+    return 'SalinaState.error()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Error);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() error,
+    required TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)
+        loadedTables,
+  }) {
+    return error();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? error,
+    TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)?
+        loadedTables,
+  }) {
+    return error?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? error,
+    TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)?
+        loadedTables,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Error value) error,
+    required TResult Function(LoadedLines value) loadedTables,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
+    TResult Function(LoadedLines value)? loadedTables,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
+    TResult Function(LoadedLines value)? loadedTables,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error implements SalinaState {
+  const factory Error() = _$Error;
+}
+
+/// @nodoc
 abstract class _$$LoadedLinesCopyWith<$Res> {
   factory _$$LoadedLinesCopyWith(
           _$LoadedLines value, $Res Function(_$LoadedLines) then) =
       __$$LoadedLinesCopyWithImpl<$Res>;
-  $Res call({List<Salina> lines});
+  $Res call({List<LineNumber> lines, List<Salina> salinyToShow});
 }
 
 /// @nodoc
@@ -195,11 +324,16 @@ class __$$LoadedLinesCopyWithImpl<$Res> extends _$SalinaStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? lines = freezed,
+    Object? salinyToShow = freezed,
   }) {
     return _then(_$LoadedLines(
       lines == freezed
           ? _value._lines
           : lines // ignore: cast_nullable_to_non_nullable
+              as List<LineNumber>,
+      salinyToShow == freezed
+          ? _value._salinyToShow
+          : salinyToShow // ignore: cast_nullable_to_non_nullable
               as List<Salina>,
     ));
   }
@@ -208,18 +342,28 @@ class __$$LoadedLinesCopyWithImpl<$Res> extends _$SalinaStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedLines implements LoadedLines {
-  const _$LoadedLines(final List<Salina> lines) : _lines = lines;
+  const _$LoadedLines(
+      final List<LineNumber> lines, final List<Salina> salinyToShow)
+      : _lines = lines,
+        _salinyToShow = salinyToShow;
 
-  final List<Salina> _lines;
+  final List<LineNumber> _lines;
   @override
-  List<Salina> get lines {
+  List<LineNumber> get lines {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_lines);
   }
 
+  final List<Salina> _salinyToShow;
+  @override
+  List<Salina> get salinyToShow {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_salinyToShow);
+  }
+
   @override
   String toString() {
-    return 'SalinaState.loadedTables(lines: $lines)';
+    return 'SalinaState.loadedTables(lines: $lines, salinyToShow: $salinyToShow)';
   }
 
   @override
@@ -227,12 +371,16 @@ class _$LoadedLines implements LoadedLines {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedLines &&
-            const DeepCollectionEquality().equals(other._lines, _lines));
+            const DeepCollectionEquality().equals(other._lines, _lines) &&
+            const DeepCollectionEquality()
+                .equals(other._salinyToShow, _salinyToShow));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_lines));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_lines),
+      const DeepCollectionEquality().hash(_salinyToShow));
 
   @JsonKey(ignore: true)
   @override
@@ -243,29 +391,35 @@ class _$LoadedLines implements LoadedLines {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Salina> lines) loadedTables,
+    required TResult Function() error,
+    required TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)
+        loadedTables,
   }) {
-    return loadedTables(lines);
+    return loadedTables(lines, salinyToShow);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Salina> lines)? loadedTables,
+    TResult Function()? error,
+    TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)?
+        loadedTables,
   }) {
-    return loadedTables?.call(lines);
+    return loadedTables?.call(lines, salinyToShow);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Salina> lines)? loadedTables,
+    TResult Function()? error,
+    TResult Function(List<LineNumber> lines, List<Salina> salinyToShow)?
+        loadedTables,
     required TResult orElse(),
   }) {
     if (loadedTables != null) {
-      return loadedTables(lines);
+      return loadedTables(lines, salinyToShow);
     }
     return orElse();
   }
@@ -274,6 +428,7 @@ class _$LoadedLines implements LoadedLines {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
+    required TResult Function(Error value) error,
     required TResult Function(LoadedLines value) loadedTables,
   }) {
     return loadedTables(this);
@@ -283,6 +438,7 @@ class _$LoadedLines implements LoadedLines {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
     TResult Function(LoadedLines value)? loadedTables,
   }) {
     return loadedTables?.call(this);
@@ -292,6 +448,7 @@ class _$LoadedLines implements LoadedLines {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
     TResult Function(LoadedLines value)? loadedTables,
     required TResult orElse(),
   }) {
@@ -303,9 +460,12 @@ class _$LoadedLines implements LoadedLines {
 }
 
 abstract class LoadedLines implements SalinaState {
-  const factory LoadedLines(final List<Salina> lines) = _$LoadedLines;
+  const factory LoadedLines(
+          final List<LineNumber> lines, final List<Salina> salinyToShow) =
+      _$LoadedLines;
 
-  List<Salina> get lines;
+  List<LineNumber> get lines;
+  List<Salina> get salinyToShow;
   @JsonKey(ignore: true)
   _$$LoadedLinesCopyWith<_$LoadedLines> get copyWith =>
       throw _privateConstructorUsedError;
